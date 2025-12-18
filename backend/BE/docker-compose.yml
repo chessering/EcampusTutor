@@ -1,0 +1,118 @@
+
+services:
+  db:
+    image: postgres:16
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:  
+      - app-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-container
+    ports:
+      - "6379:6379"
+    networks:  
+      - app-network
+    restart: unless-stopped
+
+  web:
+    build: .
+    # image: seungjiii/ecampus-fastapi:latest
+    container_name: fastapi-container
+    env_file:
+      - .env
+    environment:
+      PROJECT_NAME: ${PROJECT_NAME}
+      VERSION: ${VERSION}
+      API_V1_PREFIX: ${API_V1_PREFIX}
+      
+      # JWT
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_ALGORITHM: ${JWT_ALGORITHM}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES}
+      REFRESH_TOKEN_EXPIRE_DAYS: ${REFRESH_TOKEN_EXPIRE_DAYS}
+      ENCRYPT_KEY: ${ENCRYPT_KEY}
+      
+      # Database
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      DATABASE_URL: ${DATABASE_URL}
+      
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+
+      # Paths
+      SUMMARY_WORKDIR: ${SUMMARY_WORKDIR}
+      PDF_SCRIPT_PATH: ${PDF_SCRIPT_PATH}
+      URL_SCRIPT_PATH: ${URL_SCRIPT_PATH}
+      CANVAS_DOWNLOADER_PATH: ${CANVAS_DOWNLOADER_PATH}
+      
+      # OpenAI & Canvas
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      CANVAS_LOGIN_URL: ${CANVAS_LOGIN_URL}
+      
+      # Timeouts
+      PDF_TIMEOUT: ${PDF_TIMEOUT}
+      VIDEO_TIMEOUT: ${VIDEO_TIMEOUT}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - app_data:/app/data
+      - app_outputs:/app/outputs
+    networks:  
+      - app-network
+    restart: unless-stopped
+
+  celery-worker:
+    build: .
+    container_name: celery-container
+    command: celery -A app.celery_config.celery_app worker --loglevel=info --concurrency=2
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      ENCRYPT_KEY: ${ENCRYPT_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      SUMMARY_WORKDIR: ${SUMMARY_WORKDIR}
+      PDF_SCRIPT_PATH: ${PDF_SCRIPT_PATH}  
+      URL_SCRIPT_PATH: ${URL_SCRIPT_PATH}  
+      CANVAS_DOWNLOADER_PATH: ${CANVAS_DOWNLOADER_PATH}  
+      CANVAS_LOGIN_URL: ${CANVAS_LOGIN_URL}  
+      PDF_TIMEOUT: ${PDF_TIMEOUT} 
+      VIDEO_TIMEOUT: ${VIDEO_TIMEOUT} 
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - app_data:/app/data
+      - app_outputs:/app/outputs
+    networks:  
+      - app-network
+    restart: unless-stopped
+
+networks: 
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  app_data:
+  app_outputs:
