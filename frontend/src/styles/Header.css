@@ -1,0 +1,37 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--header-bg);
+    border-bottom: 1px solid rgba(0,0,0,.05);
+  }
+  
+  .header__inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .brand {
+    font-weight: 800;
+    font-size: 30px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .nav__link {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+  .nav__link:hover {
+    color: #e26b7a;
+    background: rgba(226, 107, 122, 0.12);
+  }
+  

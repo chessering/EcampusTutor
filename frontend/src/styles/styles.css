@@ -1,0 +1,58 @@
+/* ---------- 테마 변수 ---------- */
+:root{
+    --pink: #FFEDED;   /* 본문 기본(홈/메인) */
+    --white: #ffffff;  /* 헤더 기본 */
+    --text: #111827;
+    --muted: #6b7280;
+    --shadow: 0 10px 30px rgba(0,0,0,.08);
+    --radius: 18px;
+    --container: 1120px;
+    --header-h: 64px;
+  }
+  
+  .theme-default {        /* 홈 & 메인 */
+    --header-bg: #ffffff;
+    --page-bg: var(--pink);
+  }
+  
+  .theme-inverted {       /* 로그인만 반전 */
+    --header-bg: var(--pink);
+    --page-bg: #ffffff;
+  }
+  
+  *{ box-sizing: border-box; }
+  html, body, #root { height: 100%; }
+  
+  body{
+    margin: 0;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+      Noto Sans, Apple SD Gothic Neo, Malgun Gothic, "Apple Color Emoji",
+      "Segoe UI Emoji";
+    background: transparent;
+  }
+
+  .app-shell {
+    min-height: 100vh;
+    background: var(--page-bg);
+  }
+  
+  .container{
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+
+.page{
+  min-height: calc(100vh - var(--header-h));
+  background: var(--page-bg);
+  padding: 40px 0 80px;
+}
+
+  
+  /* 반응형 */
+  @media (max-width: 680px){
+    .grid{ grid-template-columns:1fr; gap:20px; }
+  }
+  

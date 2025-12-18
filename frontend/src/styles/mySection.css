@@ -1,0 +1,118 @@
+/* MySection 전체 흰 패널 */
+.my-section-panel {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 32px 40px;
+}
+
+/* 상단 제목 줄 */
+.my-section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.my-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.my-section-divider {
+  height: 1px;
+  width: 100%;
+  background: #111827;
+  margin-top: 4px;
+}
+
+/* 카드 리스트 */
+.my-section-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* 개별 카드 */
+.my-section-card {
+  width: 130px;
+  height: 140px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.my-section-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+  filter: brightness(1.03);
+}
+
+/* ===== Set B 파스텔 색상들 ===== */
+
+/* Apricot Cream */
+.card--apricot {
+  background: #ffd9b3;
+}
+
+/* Lemon Sorbet */
+.card--lemon {
+  background: #fff4a8;
+}
+
+/* Tea Green */
+.card--tea {
+  background: #d9f7c4;
+}
+
+/* Powder Sky */
+.card--powder {
+  background: #cde7ff;
+}
+
+/* Lavender Milk */
+.card--lavender {
+  background: #ead4ff;
+}
+
+/* 반응형 정리 */
+@media (max-width: 768px) {
+  .my-section-panel {
+    padding: 20px 16px 30px;
+  }
+
+  .my-section-cards {
+    gap: 16px;
+  }
+
+  .my-section-card {
+    width: 110px;
+    height: 120px;
+    font-size: 13px;
+  }
+}
+
+.card--coral { background: #FF9A9A; }
+.card--yellow { background: #F6FF8A; }
+.card--mint { background: #8FFFC4; }
+.card--blue { background: #8AB8FF; }
+.card--purple { background: #C89BFF; }
+
+/* ===== Set B 추가 5개 색상 ===== */
+.card--apricot { background: #FFD9B3; }
+.card--lemon { background: #FFF4A8; }
+.card--tea { background: #D9F7C4; }
+.card--powder { background: #CDE7FF; }
+.card--lavender { background: #EAD4FF; }

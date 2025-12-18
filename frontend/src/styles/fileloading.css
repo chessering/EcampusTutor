@@ -1,0 +1,28 @@
+.file-loading {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.file-loading__progress {
+  margin-top: 16px;
+  width: 90%;
+  height: 8px;
+  background: #C89BFF;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.file-loading__progress-inner {
+  height: 100%;
+  border-radius: inherit;
+  background: #f97316; /* 너가 쓰는 포인트 컬러로 바꿔도 됨 */
+  transition: width 0.2s ease-out;
+}
+
+.file-loading__percent {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.8;
+}

@@ -1,0 +1,15 @@
+  /* ---------- 메인 ---------- */
+  .main{ display:flex; flex-direction:row; justify-content:center; margin-top: 7%; min-height: calc(100vh - 120px); /* header 빼고 화면 중앙 배치 */}
+  .grid{
+    width:100%; max-width:980px;
+    display:grid; grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap:48px; justify-items:center; margin-top:40px;
+  }
+  .card{
+    width:100%; max-width:420px; height:250px;
+    border-radius:16px; background:#fff; border:1.5px solid #f199a2;
+    display:grid; place-items:center; box-shadow: var(--shadow);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .card:hover{ transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+  .card__title{ font-size:20px; color:#333; }
