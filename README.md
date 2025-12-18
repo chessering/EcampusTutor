@@ -10,7 +10,7 @@ url과 pdf로 강의 요약 노트, 시험 문제, 빈칸 문제를 제공해주
 ![Python](https://img.shields.io/badge/python-3.11-3670A0?style=flat-flat&logo=python&logoColor=ffdd54)
 ![SQLAlchemy](https://img.shields.io/badge/sqlalchemy-%23D71F00.svg?style=flat&logo=sqlalchemy&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-16-4169E1.svg?style=flat&logo=postgresql&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&loglColor=#61DAFB)
+![React](https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=React&loglColor=#61DAFB)
 
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=flat&logo=redis&logoColor=white)
 ![Celery](https://img.shields.io/badge/celery-5.3.4-%23a9cc54.svg?style=flat&logo=celery&logoColor=ddf4a4)
