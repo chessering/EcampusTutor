@@ -24,4 +24,4 @@ url과 pdf로 강의 요약 노트, 시험 문제, 빈칸 문제를 제공해주
 
 ## 시스템 아키텍처
 
-![alt text](assets/image.png)
+![alt text](/backend/assets/image.png)
